@@ -40,7 +40,8 @@ DROP TABLE IF EXISTS `user_admin`;
 CREATE TABLE `user_admin` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
