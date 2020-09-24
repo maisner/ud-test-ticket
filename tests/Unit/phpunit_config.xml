@@ -1,0 +1,23 @@
+<phpunit
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.0/phpunit.xsd"
+		backupGlobals="true"
+		backupStaticAttributes="false"
+		bootstrap="bootstrap_unit.php">
+
+	<testsuites>
+		<testsuite name="My Test Suite">
+			<directory>./</directory>
+		</testsuite>
+	</testsuites>
+
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">..\..\app\</directory>
+			<exclude>
+				<file>..\..\app\bootstrap.php</file>
+			</exclude>
+		</whitelist>
+	</filter>
+
+</phpunit>

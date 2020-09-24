@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<dataset>
+	<privilege id="1" name="Adresář"/>
+	<privilege id="2" name="Vyhledávač"/>
+
+	<village id="1" name="Praha"/>
+	<village id="2" name="Brno"/>
+
+	<user_admin id="1" name="Adam"/>
+	<user_admin id="2" name="Bob"/>
+	<user_admin id="3" name="Cyril"/>
+
+	<!-- Adam -->
+	<rules id="1" type="allow" user_admin_id="1" village_id="1" privilege_id="1"/>
+	<rules id="2" type="allow" user_admin_id="1" village_id="1" privilege_id="2"/>
+	<rules id="3" type="deny" user_admin_id="1" village_id="2" privilege_id="1"/>
+	<rules id="4" type="deny" user_admin_id="1" village_id="2" privilege_id="2"/>
+
+	<!-- Bob -->
+	<rules id="5" type="allow" user_admin_id="2" village_id="2" privilege_id="1"/>
+	<rules id="6" type="deny" user_admin_id="2" village_id="2" privilege_id="2"/>
+	<rules id="7" type="allow" user_admin_id="2" village_id="1" privilege_id="2"/>
+	<rules id="8" type="deny" user_admin_id="2" village_id="1" privilege_id="1"/>
+
+	<!-- Cyril -->
+	<rules id="9" type="allow" user_admin_id="3" village_id="1" privilege_id="1"/>
+	<rules id="10" type="allow" user_admin_id="3" village_id="2" privilege_id="1"/>
+	<rules id="11" type="allow" user_admin_id="3" village_id="2" privilege_id="2"/>
+	<rules id="12" type="deny" user_admin_id="3" village_id="1" privilege_id="2"/>
+
+
+</dataset>

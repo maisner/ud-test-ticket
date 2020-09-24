@@ -1,0 +1,49 @@
+version: '3.1'
+services:
+    php-apache:
+        build:
+            context: ./
+            dockerfile: .docker/php-apache/Dockerfile
+        container_name: php-apache
+        ports:
+            - "8080:80"
+        links:
+            - mysql
+        volumes:
+            - ./:/var/www/html
+        env_file: .env
+
+    mysql:
+        image: mysql:5.7
+        container_name: mysql
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4;' --innodb-flush-log-at-trx-commit=0
+        volumes:
+            - .database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+            - .docker/mysql/data:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: app
+            MYSQL_USER: app
+            MYSQL_PASSWORD: 123
+            MYSQL_ROOT_PASSWORD: 123
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+    mysql-test:
+        image: mysql:5.7
+        container_name: mysql-test
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4;' --innodb-flush-log-at-trx-commit=0
+        volumes:
+            - .database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+        environment:
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: 123
+            MYSQL_ROOT_PASSWORD: 123
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+    adminer:
+        container_name: adminer
+        image: adminer
+        ports:
+            - "8081:8080"
+        environment:
+            ADMINER_DEFAULT_SERVER: mysql

@@ -1,0 +1,9 @@
+parameters:
+
+services:
+	identityMap.factory: Maisner\App\Model\Utils\IdentityMap\Factory\IdentityMapFactory
+
+	- Maisner\App\Model\Village\VillageModel
+	- Maisner\App\Model\Rule\RuleModel
+	- Maisner\App\Model\Privilege\PrivilegeModel
+	- Maisner\App\Model\UserAdmin\UserAdminModel
