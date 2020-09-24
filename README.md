@@ -1,2 +1,3 @@
 # ud-test-ticket
-Run `composer build` for CS, PHPStan a tests
+- Make `.env` file from `.env.example` in root
+- Run command `composer build` for CS, PHPStan a tests
